@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block trees %}
+    <ul>
+    {% for node in roots %}
+        {% include "tree.html" %}
+    {% endfor %}
+    </ul>
+{%  endblock %}

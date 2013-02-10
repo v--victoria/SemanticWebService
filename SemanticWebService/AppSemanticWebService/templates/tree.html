@@ -1,0 +1,17 @@
+<li>
+    {{ node.name }}
+    {% if node.has_children %}
+        has children<br/>
+        <ul>
+            {% for ch in node.children %}
+                {% with ch as node %}
+                    {% with "tree.html" as template_name %}
+                        {% include template_name %}
+                    {% endwith %}
+                {% endwith %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        has no children<br/>
+    {% endif %}
+</li>
