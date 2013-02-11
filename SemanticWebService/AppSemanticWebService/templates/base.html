@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="{{ STATIC_URL }}style.css" rel="stylesheet" type="text/css" />
     <title>Test</title>
 </head>
 <body>
-Trees<br/>
-{% block trees %}{%  endblock %}
+<div id="wrapper">
+    <div id="header">
+        Header
+    </div>
+    <div id="page">
+        <div id="sidebar">
+            Sidebar<br/>
+            Trees<br/>
+            {% block trees %}{% endblock %}
+        </div>
+        <div id="content">
+            Content
+        </div>
+    </div>
+</div>
 </body>
 </html>
