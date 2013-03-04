@@ -219,29 +219,23 @@ a:hover {
 	padding: 30px 0px 0px 0px;
 }
 
-.post {
+.element {
 	margin-bottom: 15px;
 }
 
-.post-bgtop {
-}
-
-.post-bgbtm {
-}
-
-.post .title {
+.element .title {
 	margin-bottom: 10px;
 	padding: 12px 0 0 0px;
 	letter-spacing: -.5px;
 	color: #000000;
 }
 
-.post .title a {
+.element .title a {
 	color: #A7430F;
 	border: none;
 }
 
-.post .meta {
+.element .meta {
 	height: 30px;
 	border-bottom: 1px solid #E9E3CB;
 	margin: 0px;
@@ -252,14 +246,14 @@ a:hover {
 	font-weight: bold;
 }
 
-.post .meta .date {
+.element .meta .date {
 	float: left;
 	height: 24px;
 	padding: 3px 0px;
 	color: #464032;
 }
 
-.post .meta .posted {
+.element .meta .posted {
 	float: right;
 	height: 24px;
 	padding: 3px 15px;
@@ -267,11 +261,11 @@ a:hover {
 	color: #464032;
 }
 
-.post .meta a {
+.element .meta a {
 	color: #464032;
 }
 
-.post .entry {
+.element .entry {
 	padding: 0px 0px 20px 0px;
 	padding-bottom: 20px;
 	text-align: justify;

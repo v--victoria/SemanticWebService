@@ -13,10 +13,15 @@
         <div id="sidebar">
             Sidebar<br/>
             Trees<br/>
-            {% block trees %}{% endblock %}
+            <ul>
+                {% for node in roots %}
+                    {% include "tree.html" %}
+                {% endfor %}
+            </ul>
         </div>
         <div id="content">
             Content
+            {% block content %}{% endblock %}
         </div>
     </div>
 </div>

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for element in elements %}
+        <div class="post">
+        {{ element.txtContent }}
+        </div>
+    {%  endfor %}
+{% endblock %}

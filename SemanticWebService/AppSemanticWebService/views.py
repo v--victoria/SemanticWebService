@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response
-from classNode import Node
+from classNode import Node, Element
 from django.template import RequestContext
 
 def test(request):
@@ -22,4 +22,12 @@ def test(request):
     roots = []
     roots.append(r)
     roots.append(r2)
-    return render_to_response('trees.html', {'roots': roots}, context_instance=RequestContext(request))
+    elements = []
+    el1 = Element()
+    el2 = Element()
+    el1.txtContent = "1"
+    el2.txtContent = "2"
+    elements.append(el1)
+    elements.append(el2)
+
+    return render_to_response('content.html', {'roots': roots, 'elements' : elements}, context_instance=RequestContext(request))
