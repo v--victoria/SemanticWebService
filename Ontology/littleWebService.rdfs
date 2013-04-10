@@ -109,15 +109,24 @@
         >It is very short article about Hogwarts Express.</hasTxtArticleContent>
       </Article>
     </hasSectionElement>
+    <rdfs:label xml:lang="ru">Места</rdfs:label>
+    <rdfs:label xml:lang="en">Places</rdfs:label>
     <subSectionOf>
       <Section rdf:ID="Plot">
+        <rdfs:label xml:lang="ru">Сюжет</rdfs:label>
+        <rdfs:label xml:lang="en">Plot</rdfs:label>
         <subSectionOf>
-          <Section rdf:ID="HarryPotter"/>
+          <Section rdf:ID="HarryPotter">
+            <rdfs:label xml:lang="ru">Гарри Поттер</rdfs:label>
+            <rdfs:label xml:lang="en">Harry Potter</rdfs:label>
+          </Section>
         </subSectionOf>
       </Section>
     </subSectionOf>
   </Section>
   <Section rdf:ID="Author">
+    <rdfs:label xml:lang="ru">Автор</rdfs:label>
+    <rdfs:label xml:lang="en">Author</rdfs:label>
     <hasSectionElement>
       <Article rdf:ID="ArticleAboutAuthor">
         <hasTxtArticleContent rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -222,6 +231,8 @@
   </User>
   <Section rdf:ID="Characters">
     <hasSectionElement rdf:resource="#AlbusPercivalWulfricBrianDumbledore"/>
+    <rdfs:label xml:lang="ru">Персонажи</rdfs:label>
+    <rdfs:label xml:lang="en">Characters</rdfs:label>
     <subSectionOf rdf:resource="#Plot"/>
   </Section>
 </rdf:RDF>
