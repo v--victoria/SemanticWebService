@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% for element in prop_list %}
+{{ element.0 }}: {{ element.1 }}<br/><br/>
+{% endfor %}
+
+{% endblock %}

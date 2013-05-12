@@ -15,4 +15,8 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
     ('^$', test),
+    (r'^base/$', show_base),
+    (r'^base/Section/$', show_sections),
+    (r'^base/Section/(\w+)/$', show_section), #same as show all current section elements
+    (r'^base/SectionElement/(\w+)/$', show_section_element),
 )

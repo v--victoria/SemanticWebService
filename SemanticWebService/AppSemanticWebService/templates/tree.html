@@ -1,7 +1,6 @@
 <li>
-    {{ node.name }}
+    {{ node.label }}
     {% if node.has_children %}
-        has children<br/>
         <ul>
             {% for ch in node.children %}
                 {% with ch as node %}
@@ -11,7 +10,5 @@
                 {% endwith %}
             {% endfor %}
         </ul>
-    {% else %}
-        has no children<br/>
     {% endif %}
 </li>

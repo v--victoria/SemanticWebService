@@ -7,23 +7,17 @@
 <body>
 <div id="wrapper">
     <div id="header">
-        Header<br/>
+        Header
         {% if test %}
             {{ test }}
         {% endif %}
     </div>
     <div id="page">
         <div id="sidebar">
-            Sidebar<br/><br/>
-            <ul>
-                {% for node in roots %}
-                    {% include "tree.html" %}
-                {% endfor %}
-            </ul>
+            
         </div>
         <div id="content">
-            Content<br/><br/>
-            {% block content %}{% endblock %}
+            Main page
         </div>
     </div>
 </div>
