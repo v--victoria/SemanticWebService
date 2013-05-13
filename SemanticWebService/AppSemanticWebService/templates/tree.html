@@ -1,5 +1,5 @@
 <li>
-    {{ node.label }}
+    <a href="/base/Section/{{ node.uri }}">{{ node.label }}</a>
     {% if node.has_children %}
         <ul>
             {% for ch in node.children %}

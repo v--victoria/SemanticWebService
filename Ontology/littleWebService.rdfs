@@ -24,16 +24,13 @@
   <rdfs:Class rdf:ID="Article">
     <rdfs:subClassOf rdf:resource="#SectionElement"/>
   </rdfs:Class>
-  <rdfs:Class rdf:ID="Post">
-    <rdfs:subClassOf rdf:resource="#SectionElement"/>
-  </rdfs:Class>
   <rdfs:Class rdf:ID="Like">
     <rdfs:subClassOf rdf:resource="#Comment"/>
   </rdfs:Class>
-  <rdfs:Class rdf:ID="User"/>
-  <rdfs:Class rdf:ID="TermDefinition">
+  <rdfs:Class rdf:ID="Post">
     <rdfs:subClassOf rdf:resource="#SectionElement"/>
   </rdfs:Class>
+  <rdfs:Class rdf:ID="User"/>
   <rdfs:Class rdf:ID="Workspace"/>
   <rdfs:Class rdf:ID="Term">
     <rdfs:subClassOf rdf:resource="#SectionElement"/>
@@ -67,184 +64,179 @@
   <owl:ObjectProperty rdf:ID="hasWorkspaceElement">
     <rdfs:domain rdf:resource="#Workspace"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="hasTermDefinition">
-    <rdfs:range rdf:resource="#TermDefinition"/>
-    <rdfs:domain rdf:resource="#Term"/>
-  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="precedes">
     <rdfs:domain rdf:resource="#SectionElement"/>
     <rdfs:range rdf:resource="#SectionElement"/>
   </owl:ObjectProperty>
-  <owl:DatatypeProperty rdf:ID="hasTxtArticleContent">
-    <rdfs:domain rdf:resource="#Article"/>
-    <rdfs:subPropertyOf>
-      <owl:DatatypeProperty rdf:ID="hasTxtContent"/>
-    </rdfs:subPropertyOf>
+  <owl:DatatypeProperty rdf:ID="isAuth">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#User"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="hasTxtPostContent">
-    <rdfs:subPropertyOf>
-      <owl:DatatypeProperty rdf:about="#hasTxtContent"/>
-    </rdfs:subPropertyOf>
-    <rdfs:domain rdf:resource="#Post"/>
+  <owl:DatatypeProperty rdf:ID="hasSectionElementContent">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#SectionElement"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="hasTxtTermDefinitionContent">
-    <rdfs:subPropertyOf>
-      <owl:DatatypeProperty rdf:about="#hasTxtContent"/>
-    </rdfs:subPropertyOf>
-    <rdfs:domain rdf:resource="#TermDefinition"/>
+  <owl:DatatypeProperty rdf:ID="hasCommentContent">
+    <rdfs:domain rdf:resource="#FreeFormComment"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:ID="hasRights">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:domain rdf:resource="#Workspace"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="hasTxtCommentContent">
-    <rdfs:domain rdf:resource="#FreeFormComment"/>
-    <rdfs:subPropertyOf>
-      <owl:DatatypeProperty rdf:about="#hasTxtContent"/>
-    </rdfs:subPropertyOf>
+  <owl:DatatypeProperty rdf:ID="hasPassword">
+    <rdfs:domain rdf:resource="#User"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="#hasTxtContent">
+  <owl:DatatypeProperty rdf:ID="knowsLang">
+    <rdfs:domain rdf:resource="#User"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <User rdf:ID="Emma">
+    <adds>
+      <Term rdf:ID="AlbusPercivalWulfricBrianDumbledore">
+        <rdfs:label xml:lang="en">Who is Albus Dumbledore</rdfs:label>
+        <belongsToSection>
+          <Section rdf:ID="Characters">
+            <hasSectionElement rdf:resource="#AlbusPercivalWulfricBrianDumbledore"/>
+            <rdfs:label xml:lang="en">Characters</rdfs:label>
+            <rdfs:label xml:lang="ru">Персонажи</rdfs:label>
+            <subSectionOf>
+              <Section rdf:ID="Plot">
+                <rdfs:label xml:lang="en">Plot</rdfs:label>
+                <rdfs:label xml:lang="ru">Сюжет</rdfs:label>
+                <subSectionOf>
+                  <Section rdf:ID="HarryPotter">
+                    <rdfs:label xml:lang="en">Harry Potter</rdfs:label>
+                    <rdfs:label xml:lang="ru">Гарри Поттер</rdfs:label>
+                  </Section>
+                </subSectionOf>
+              </Section>
+            </subSectionOf>
+          </Section>
+        </belongsToSection>
+        <hasSectionElementContent xml:lang="ru">Директор школы Хогвартс</hasSectionElementContent>
+        <hasSectionElementContent xml:lang="en">Transfiguration professor in Tom Riddle's time</hasSectionElementContent>
+        <hasSectionElementContent xml:lang="en">Hogwarts Headmaster in Harry Potter's time</hasSectionElementContent>
+      </Term>
+    </adds>
+    <adds>
+      <FreeFormComment rdf:ID="CommentAboutAlbusDumbledore1">
+        <addedTo rdf:resource="#AlbusPercivalWulfricBrianDumbledore"/>
+        <hasCommentContent xml:lang="en">comment1</hasCommentContent>
+      </FreeFormComment>
+    </adds>
+    <isAuth rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >false</isAuth>
+    <knowsLang rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >en</knowsLang>
+    <adds>
+      <FreeFormComment rdf:ID="CommentAboutAlbusDumbledore2">
+        <addedTo rdf:resource="#CommentAboutAlbusDumbledore1"/>
+        <hasCommentContent xml:lang="ru">комментарий2</hasCommentContent>
+      </FreeFormComment>
+    </adds>
     <knows>
-      <User rdf:ID="Elena">
+      <User rdf:ID="Sarah">
+        <isAuth rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+        >true</isAuth>
+        <hasPassword rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >sarah1234</hasPassword>
+        <knowsLang rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >ru</knowsLang>
         <adds>
-          <rdf:Description rdf:ID="AlbusPercivalWulfricBrianDumbledore1">
-            <hasTxtTermDefinitionContent rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-            >Hogwarts Headmaster in Harry Potter's time</hasTxtTermDefinitionContent>
-          </rdf:Description>
-        </adds>
-        <adds>
-          <Like rdf:ID="ElenaLike">
+          <Unlike rdf:ID="SarahUnlike">
             <addedTo>
-              <TermDefinition rdf:ID="AlbusPercivalWulfricBrianDumbledore2">
-                <hasTxtTermDefinitionContent rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-                >Transfiguration professor in Tom Riddle's time, founder of the Order of the Phoenix</hasTxtTermDefinitionContent>
-              </TermDefinition>
-            </addedTo>
-          </Like>
-        </adds>
-        <adds>
-          <Workspace rdf:ID="ElenaWorkspace">
-            <hasWorkspaceElement>
-              <Article rdf:ID="ArticleAboutAuthor">
+              <Article rdf:ID="ArticleAboutHogwartsExpress">
                 <belongsToSection>
-                  <Section rdf:ID="Author">
-                    <rdfs:label xml:lang="ru">Автор</rdfs:label>
-                    <rdfs:label xml:lang="en">Author</rdfs:label>
-                    <hasSectionElement rdf:resource="#ArticleAboutAuthor"/>
-                    <hasSectionElement>
-                      <Post rdf:ID="PostFilmRights">
-                        <hasTxtPostContent rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-                        >In 1998 Rowling sold the film rights of the first four Harry Potter books to Warner Bros. for a reported £1 million ($1,982,900).</hasTxtPostContent>
-                        <belongsToSection rdf:resource="#Author"/>
-                      </Post>
-                    </hasSectionElement>
-                    <subSectionOf>
-                      <Section rdf:ID="HarryPotter">
-                        <rdfs:label xml:lang="ru">Гарри Поттер</rdfs:label>
-                        <rdfs:label xml:lang="en">Harry Potter</rdfs:label>
-                      </Section>
-                    </subSectionOf>
+                  <Section rdf:ID="Places">
+                    <hasSectionElement rdf:resource="#ArticleAboutHogwartsExpress"/>
+                    <rdfs:label xml:lang="en">Places</rdfs:label>
+                    <rdfs:label xml:lang="ru">Места</rdfs:label>
+                    <subSectionOf rdf:resource="#Plot"/>
                   </Section>
                 </belongsToSection>
-                <hasTxtArticleContent rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-                >It is very short article about J. K. Rowling.</hasTxtArticleContent>
+                <hasSectionElementContent xml:lang="en">The Hogwarts Express is a magical train that carries students non-stop from Platform 9¾ at King's Cross station in London to Hogsmeade Station, near Hogwarts. </hasSectionElementContent>
+                <rdfs:label xml:lang="en">Article About Hogwarts Express</rdfs:label>
               </Article>
-            </hasWorkspaceElement>
+            </addedTo>
+          </Unlike>
+        </adds>
+        <adds>
+          <Post rdf:ID="PostFilmRights">
+            <belongsToSection>
+              <Section rdf:ID="Author">
+                <rdfs:label xml:lang="en">Author</rdfs:label>
+                <rdfs:label xml:lang="ru">Автор</rdfs:label>
+                <hasSectionElement rdf:resource="#PostFilmRights"/>
+                <hasSectionElement>
+                  <Article rdf:ID="ArticleAboutAuthor">
+                    <belongsToSection rdf:resource="#Author"/>
+                    <hasSectionElementContent xml:lang="en">British novelist, best known as the author of the Harry Potter fantasy series. The Potter books have gained worldwide attention, won multiple awards, and sold more than 400 million copies. They have become the best-selling book series in history, and been the basis for a series of films which has become the highest-grossing film series in history. Rowling had overall approval on the scripts as well as maintaining creative control by serving as a producer on the final instalment.</hasSectionElementContent>
+                    <rdfs:label xml:lang="en">Article about Author</rdfs:label>
+                  </Article>
+                </hasSectionElement>
+                <subSectionOf rdf:resource="#HarryPotter"/>
+              </Section>
+            </belongsToSection>
+            <hasSectionElementContent xml:lang="en">In 1998 Rowling sold the film rights of the first four Harry Potter books to Warner Bros. for a reported £1 million ($1,982,900).</hasSectionElementContent>
+            <rdfs:label xml:lang="en">Post about film rights</rdfs:label>
+          </Post>
+        </adds>
+        <adds>
+          <Workspace rdf:ID="SarahWorkspace">
+            <hasWorkspaceElement rdf:resource="#PostFilmRights"/>
             <hasRights rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
             >ar</hasRights>
-            <hasUser>
-              <User rdf:ID="Sarah">
-                <adds>
-                  <Workspace rdf:ID="SarahWorkspace">
-                    <hasWorkspaceElement rdf:resource="#PostFilmRights"/>
-                    <hasRights rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-                    >ar</hasRights>
-                  </Workspace>
-                </adds>
-                <adds rdf:resource="#PostFilmRights"/>
-                <adds rdf:resource="#AlbusPercivalWulfricBrianDumbledore2"/>
-                <adds>
-                  <Unlike rdf:ID="SarahUnlike">
-                    <addedTo>
-                      <Article rdf:ID="ArticleAboutHogwartsExpress">
-                        <belongsToSection>
-                          <Section rdf:ID="Places">
-                            <hasSectionElement rdf:resource="#ArticleAboutHogwartsExpress"/>
-                            <rdfs:label xml:lang="ru">Места</rdfs:label>
-                            <rdfs:label xml:lang="en">Places</rdfs:label>
-                            <subSectionOf>
-                              <Section rdf:ID="Plot">
-                                <rdfs:label xml:lang="ru">Сюжет</rdfs:label>
-                                <rdfs:label xml:lang="en">Plot</rdfs:label>
-                                <subSectionOf rdf:resource="#HarryPotter"/>
-                              </Section>
-                            </subSectionOf>
-                          </Section>
-                        </belongsToSection>
-                        <hasTxtArticleContent rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-                        >It is very short article about Hogwarts Express.</hasTxtArticleContent>
-                      </Article>
-                    </addedTo>
-                  </Unlike>
-                </adds>
-                <knows rdf:resource="#Elena"/>
-              </User>
-            </hasUser>
           </Workspace>
         </adds>
-        <adds rdf:resource="#ArticleAboutAuthor"/>
-        <knows rdf:resource="#Sarah"/>
+        <knows>
+          <User rdf:ID="Elena">
+            <hasPassword rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >elena1234</hasPassword>
+            <isAuth rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+            >true</isAuth>
+            <adds rdf:resource="#AlbusPercivalWulfricBrianDumbledore1"/>
+            <adds rdf:resource="#ArticleAboutAuthor"/>
+            <adds>
+              <Workspace rdf:ID="ElenaWorkspace">
+                <hasWorkspaceElement rdf:resource="#ArticleAboutAuthor"/>
+                <hasRights rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >ar</hasRights>
+                <hasUser rdf:resource="#Sarah"/>
+              </Workspace>
+            </adds>
+            <adds>
+              <Like rdf:ID="ElenaLike">
+                <addedTo rdf:resource="#ArticleAboutAuthor"/>
+              </Like>
+            </adds>
+            <knows rdf:resource="#Sarah"/>
+            <knowsLang rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >en</knowsLang>
+          </User>
+        </knows>
       </User>
     </knows>
-    <knows rdf:resource="#Sarah"/>
+    <knows rdf:resource="#Elena"/>
+    <adds rdf:resource="#ArticleAboutHogwartsExpress"/>
+    <hasPassword rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >emma1234</hasPassword>
     <adds>
       <Workspace rdf:ID="EmmaWorkspace">
-        <hasWorkspaceElement rdf:resource="#AlbusPercivalWulfricBrianDumbledore2"/>
         <hasWorkspaceElement rdf:resource="#SarahUnlike"/>
         <hasRights rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
         >adcr</hasRights>
-        <hasWorkspaceElement>
-          <Term rdf:ID="AlbusPercivalWulfricBrianDumbledore">
-            <belongsToSection>
-              <Section rdf:ID="Characters">
-                <hasSectionElement rdf:resource="#AlbusPercivalWulfricBrianDumbledore"/>
-                <rdfs:label xml:lang="ru">Персонажи</rdfs:label>
-                <rdfs:label xml:lang="en">Characters</rdfs:label>
-                <subSectionOf rdf:resource="#Plot"/>
-              </Section>
-            </belongsToSection>
-            <hasTermDefinition rdf:resource="#AlbusPercivalWulfricBrianDumbledore1"/>
-            <hasTermDefinition rdf:resource="#AlbusPercivalWulfricBrianDumbledore2"/>
-          </Term>
-        </hasWorkspaceElement>
-        <hasWorkspaceElement>
-          <FreeFormComment rdf:ID="CommentAboutAlbusDumbledore1">
-            <addedTo rdf:resource="#AlbusPercivalWulfricBrianDumbledore"/>
-            <hasTxtCommentContent rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-            >Killed_by_Severus_Snape</hasTxtCommentContent>
-          </FreeFormComment>
-        </hasWorkspaceElement>
+        <hasWorkspaceElement rdf:resource="#AlbusPercivalWulfricBrianDumbledore"/>
+        <hasWorkspaceElement rdf:resource="#CommentAboutAlbusDumbledore1"/>
         <hasWorkspaceElement rdf:resource="#ElenaLike"/>
-        <hasWorkspaceElement>
-          <FreeFormComment rdf:ID="CommentAboutAlbusDumbledore2">
-            <addedTo rdf:resource="#CommentAboutAlbusDumbledore1"/>
-            <hasTxtCommentContent rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-            >Killed_by_Severus_Snape</hasTxtCommentContent>
-          </FreeFormComment>
-        </hasWorkspaceElement>
+        <hasWorkspaceElement rdf:resource="#CommentAboutAlbusDumbledore2"/>
         <hasWorkspaceElement rdf:resource="#ArticleAboutHogwartsExpress"/>
         <hasUser rdf:resource="#Elena"/>
         <hasUser rdf:resource="#Sarah"/>
         <hasWorkspaceElement rdf:resource="#AlbusPercivalWulfricBrianDumbledore1"/>
       </Workspace>
     </adds>
-    <adds rdf:resource="#ArticleAboutHogwartsExpress"/>
-    <adds rdf:resource="#AlbusPercivalWulfricBrianDumbledore"/>
-    <adds rdf:resource="#CommentAboutAlbusDumbledore2"/>
-    <adds rdf:resource="#CommentAboutAlbusDumbledore1"/>
   </User>
 </rdf:RDF>
 

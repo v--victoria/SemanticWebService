@@ -23,6 +23,27 @@
         </div>
         <div id="content">
             Content<br/><br/>
+            {% if isAuth %}
+            Welcome, {{ user }}!<br/>
+            Your preferred language is {{ lang }}.<br/>
+            <a href="/logout">Logout</a>
+	    <br/><br/><br/><hr>
+            {% endif %}
+            {% if messages %}
+                <br/>
+                <div id="messages">
+                    Messages:
+                    <ul>
+                        {% for message in messages %}
+                            <li>
+                                {% if message.tags %}{{ message.tags }}:{% endif %}
+                                <strong>{{ message }}</strong>
+                            </li>
+                        {%  endfor %}
+                    </ul>
+                </div>
+	    <br/><br/><br/><hr>
+            {% endif %}
             {% block content %}{% endblock %}
         </div>
     </div>

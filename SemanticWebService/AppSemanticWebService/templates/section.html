@@ -3,7 +3,15 @@
 {% block content %}
     {% for element in elements %}
         <div class="post">
-        {{ element.txtContent }}
+        <a href="/base/SectionElement/{{ element.0 }}">{{ element.1 }}</a>
         </div>
     {%  endfor %}
+    <br/><br/><br/>
+    Add new instance to current section<br/>
+    {{ form.as_table }}
+    <br/>
+    {% for p in properties %}
+    {{ p }}: <input id="{{ p }}" type="text"/><br/>
+    {%  endfor %}
+    <br/>
 {% endblock %}
