@@ -1,4 +1,4 @@
-; Mon May 13 14:25:04 MSD 2013
+; Sun May 19 14:45:18 MSD 2013
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[littleWebService_ProjectKB_Class1614]
-		[littleWebService_ProjectKB_Class1615]
-		[littleWebService_ProjectKB_Class1616]
-		[littleWebService_ProjectKB_Class1617]
-		[littleWebService_ProjectKB_Class1618]))
+		[littleWebService_ProjectKB_Class66]
+		[littleWebService_ProjectKB_Class67]
+		[littleWebService_ProjectKB_Class68]
+		[littleWebService_ProjectKB_Class69]
+		[littleWebService_ProjectKB_Class70]))
 
 ([CLSES_TAB] of  Widget
 
@@ -3013,7 +3013,7 @@
 	(property_list [XY_Instance_195])
 	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.OWLFormWidget"))
 
-([KB_863073_Class0] of  Map
+([KB_858910_Class0] of  Map
 )
 
 ([KB_865583_Instance_10] of  Widget
@@ -5362,31 +5362,6 @@
 ([littleWebService_ProjectKB_Class16] of  Property_List
 )
 
-([littleWebService_ProjectKB_Class1614] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
-
-([littleWebService_ProjectKB_Class1615] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([littleWebService_ProjectKB_Class1616] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([littleWebService_ProjectKB_Class1617] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Thing")
-	(string_value "%3ANAME"))
-
-([littleWebService_ProjectKB_Class1618] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
 ([littleWebService_ProjectKB_Class17] of  Widget
 
 	(is_hidden TRUE)
@@ -5492,180 +5467,14 @@
 	(property_list [littleWebService_ProjectKB_Class38])
 	(widget_class_name "ca.uvic.csr.shrimp.jambalaya.JambalayaTab"))
 
-([littleWebService_ProjectKB_Class370] of  Widget
-
-	(is_hidden FALSE)
-	(name "http://www.owl-ontologies.com/Ontology1359802755.owl#TermDefinition")
-	(property_list [littleWebService_ProjectKB_Class373])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.OWLFormWidget"))
-
-([littleWebService_ProjectKB_Class373] of  Property_List
-
-	(properties
-		[littleWebService_ProjectKB_Class374]
-		[littleWebService_ProjectKB_Class377]
-		[littleWebService_ProjectKB_Class380]
-		[littleWebService_ProjectKB_Class383]
-		[littleWebService_ProjectKB_Class385]
-		[littleWebService_ProjectKB_Class387]
-		[littleWebService_ProjectKB_Class389]
-		[littleWebService_ProjectKB_Class391]
-		[littleWebService_ProjectKB_Class393]
-		[littleWebService_ProjectKB_Class395]
-		[littleWebService_ProjectKB_Class397]))
-
-([littleWebService_ProjectKB_Class374] of  Widget
-
-	(height 0)
-	(is_hidden FALSE)
-	(label "Name")
-	(name ":NAME")
-	(property_list [littleWebService_ProjectKB_Class375])
-	(width 0)
-	(x 0)
-	(y 0))
-
-([littleWebService_ProjectKB_Class375] of  Property_List
-
-	(properties [littleWebService_ProjectKB_Class376]))
-
-([littleWebService_ProjectKB_Class376] of  Boolean
-
-	(boolean_value TRUE)
-	(name "DisabledByUser"))
-
-([littleWebService_ProjectKB_Class377] of  Property_List
-
-	(name "layout properties")
-	(properties
-		[littleWebService_ProjectKB_Class378]
-		[littleWebService_ProjectKB_Class379]))
-
-([littleWebService_ProjectKB_Class378] of  String
-
-	(name "horizontal_stretcher")
-	(string_value "<<all>>"))
-
-([littleWebService_ProjectKB_Class379] of  String
-
-	(name "vertical_stretcher")
-	(string_value "<<none>>"))
-
 ([littleWebService_ProjectKB_Class38] of  Property_List
 )
-
-([littleWebService_ProjectKB_Class380] of  Widget
-
-	(height 180)
-	(is_hidden FALSE)
-	(name "http://protege.stanford.edu/plugins/owl/protege#inferredType")
-	(property_list [littleWebService_ProjectKB_Class381])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.HeaderWidget")
-	(width 550)
-	(x 0)
-	(y 0))
-
-([littleWebService_ProjectKB_Class381] of  Property_List
-
-	(properties [littleWebService_ProjectKB_Class382]))
-
-([littleWebService_ProjectKB_Class382] of  Boolean
-
-	(boolean_value FALSE)
-	(name "DisabledByUser"))
-
-([littleWebService_ProjectKB_Class383] of  Widget
-
-	(is_hidden FALSE)
-	(name "http://www.w3.org/2002/07/owl#versionInfo")
-	(property_list [littleWebService_ProjectKB_Class384]))
-
-([littleWebService_ProjectKB_Class384] of  Property_List
-)
-
-([littleWebService_ProjectKB_Class385] of  Widget
-
-	(is_hidden FALSE)
-	(name "http://www.w3.org/2000/01/rdf-schema#isDefinedBy")
-	(property_list [littleWebService_ProjectKB_Class386]))
-
-([littleWebService_ProjectKB_Class386] of  Property_List
-)
-
-([littleWebService_ProjectKB_Class387] of  Widget
-
-	(is_hidden FALSE)
-	(name "http://www.w3.org/2000/01/rdf-schema#comment")
-	(property_list [littleWebService_ProjectKB_Class388]))
-
-([littleWebService_ProjectKB_Class388] of  Property_List
-)
-
-([littleWebService_ProjectKB_Class389] of  Widget
-
-	(is_hidden FALSE)
-	(name "http://www.w3.org/2000/01/rdf-schema#seeAlso")
-	(property_list [littleWebService_ProjectKB_Class390]))
 
 ([littleWebService_ProjectKB_Class39] of  Widget
 
 	(is_hidden TRUE)
 	(property_list [littleWebService_ProjectKB_Class40])
 	(widget_class_name "edu.stanford.smi.protege.query.LuceneQueryPlugin"))
-
-([littleWebService_ProjectKB_Class390] of  Property_List
-)
-
-([littleWebService_ProjectKB_Class391] of  Widget
-
-	(is_hidden FALSE)
-	(name "http://www.w3.org/2000/01/rdf-schema#label")
-	(property_list [littleWebService_ProjectKB_Class392]))
-
-([littleWebService_ProjectKB_Class392] of  Property_List
-)
-
-([littleWebService_ProjectKB_Class393] of  Widget
-
-	(height 240)
-	(is_hidden FALSE)
-	(name "http://www.owl-ontologies.com/Ontology1359802755.owl#precedes")
-	(property_list [littleWebService_ProjectKB_Class394])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.MultiResourceWidget")
-	(width 200)
-	(x 200)
-	(y 180))
-
-([littleWebService_ProjectKB_Class394] of  Property_List
-)
-
-([littleWebService_ProjectKB_Class395] of  Widget
-
-	(height 120)
-	(is_hidden FALSE)
-	(name "http://www.owl-ontologies.com/Ontology1359802755.owl#belongsToSection")
-	(property_list [littleWebService_ProjectKB_Class396])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.MultiResourceWidget")
-	(width 200)
-	(x 0)
-	(y 300))
-
-([littleWebService_ProjectKB_Class396] of  Property_List
-)
-
-([littleWebService_ProjectKB_Class397] of  Widget
-
-	(height 120)
-	(is_hidden FALSE)
-	(name "http://www.owl-ontologies.com/Ontology1359802755.owl#hasSectionElementContent")
-	(property_list [littleWebService_ProjectKB_Class398])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.MultiLiteralWidget")
-	(width 200)
-	(x 0)
-	(y 180))
-
-([littleWebService_ProjectKB_Class398] of  Property_List
-)
 
 ([littleWebService_ProjectKB_Class4] of  Property_List
 )
@@ -5772,11 +5581,36 @@
 ([littleWebService_ProjectKB_Class60] of  Property_List
 )
 
+([littleWebService_ProjectKB_Class66] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
+
+([littleWebService_ProjectKB_Class67] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([littleWebService_ProjectKB_Class68] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([littleWebService_ProjectKB_Class69] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Thing")
+	(string_value "%3ANAME"))
+
 ([littleWebService_ProjectKB_Class7] of  Widget
 
 	(is_hidden TRUE)
 	(property_list [littleWebService_ProjectKB_Class8])
 	(widget_class_name "edu.stanford.smi.protege.keywordsearch.StringSearch"))
+
+([littleWebService_ProjectKB_Class70] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
 
 ([littleWebService_ProjectKB_Class8] of  Property_List
 )
@@ -5866,7 +5700,6 @@
 		"http://www.w3.org/2003/11/swrl#body"
 		"http://www.w3.org/2002/07/owl#MaxCardinalityRestriction"
 		"http://www.w3.org/2001/XMLSchema#gYearMonth"
-		"http://protege.stanford.edu/plugins/owl/protege#ExternalResource"
 		"http://www.w3.org/2002/07/owl#SymmetricProperty"
 		"http://www.w3.org/2000/01/rdf-schema#domain"
 		"http://www.w3.org/2001/XMLSchema#double"
