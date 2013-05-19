@@ -5,6 +5,7 @@ def UserProcessor(request):
     isAuth = False
     lang = "en"
     user = "anonymous"
+    ws = "not defined"
     
     if "CURRENT_USER" in cookies:
         user = get_short_uri(cookies["CURRENT_USER"])
@@ -12,4 +13,6 @@ def UserProcessor(request):
         isAuth = True#TODO: replace with real value
     if "LANG" in cookies:
         lang = cookies["LANG"]
-    return {'user': user, 'isAuth': isAuth, 'lang' : lang}
+    if "WS" in cookies:
+        ws = cookies["WS"]
+    return {'user': user, 'isAuth': isAuth, 'lang' : lang, 'ws': ws}

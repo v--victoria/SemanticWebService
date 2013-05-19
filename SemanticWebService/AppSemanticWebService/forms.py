@@ -15,6 +15,17 @@ class SelectSectionElementTypeForm(forms.Form):
                                              choices=res_choices,
                                              widget=forms.Select(attrs={'onChange':'window.document.location.href=this.options[this.selectedIndex].value;'}))
 
+class SetPrefferedLangForm(forms.Form):
+    formId = forms.CharField(widget=forms.HiddenInput(), initial='lang')
+    lang = forms.ChoiceField(required=True, label='Language', choices=[('ru', 'Russian'),('en', 'English')])
+
+class SetCurrentWorkspaceForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        workspaces = kwargs.pop('workspaces', None)
+        super(SetCurrentWorkspaceForm, self).__init__(*args, **kwargs)
+        self.fields['currWs'] = forms.ChoiceField(required=True, label='Current workspace', choices=workspaces)
+        self.fields['formId'] = forms.CharField(widget=forms.HiddenInput(), initial='ws')
+
 class NewSectionElementForm(forms.Form):
     def __init__(self, *args, **kwargs):
         properties = kwargs.pop('properties', None)#TODO: support different types

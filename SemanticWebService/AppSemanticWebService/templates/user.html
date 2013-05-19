@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    Your current settings:<br/>
+    Workspaces:<br/>
+    Created/user workspaces:
+    <ul>
+    {% for workspace in created_workspaces %}
+    <li><a href="/base/Workspace/{{ workspace.0 }}">{{ workspace.1 }}</a></li>
+    {%  endfor %}
+    </ul>
+    User-participated workspaces:
+    <ul>
+    {% for workspace in user_p_workspaces %}
+    <li><a href="/base/Workspace/{{ workspace.0 }}">{{ workspace.1 }}</a></li>
+    {%  endfor %}
+    </ul>
+    <hr>
+    <form action="" method="post">
+        Set current workspace:
+        {{ workspaces_form.as_table }}
+        <button type="submit">Set</button>
+    </form>
+    <hr>
+    <form action="" method="post">
+        Set preffered language:
+        {{ lang_form.as_table }}
+        <button type="submit">Set</button>
+    </form>    
+{% endblock %}

@@ -81,6 +81,15 @@ def login(request):
                     response.set_cookie("CURRENT_USER", current_user.uri)
                     lang = getattr(current_user, base.knowsLang)['en']
                     response.set_cookie("LANG", lang)
+                    #TODO: set current workspace
+                    workspaces = f.get_class(base.Workspace)
+                    kwargs = {base.addedBy: current_user.uri}
+                    created_workspaces = workspaces.filter(kwargs)
+                    if created_workspaces:
+                        response.set_cookie("WS", created_workspaces[0].uri)
+                    else:
+                        pass#TODO:
+        
                     return response
                 else:
                     #wrong password
@@ -197,19 +206,20 @@ def show_section_element(request, section_element_short_uri):
     #
     prop_list = []
     current_section_element = f.get_object(str_base + section_element_short_uri)
-    test = current_section_element.uri
     
     for p in current_section_element.properties:
         prop_value = getattr(current_section_element, p)       
         if type(prop_value) is dict:
             prop_value = prop_value['en']
-        prop_list.append([p, prop_value])
+        if get_short_uri(p) == "hasImage":
+            prop_value = getattr(f.get_object(prop_value.uri), base.hasLocation)['en']
+        prop_list.append([get_short_uri(p), prop_value])
 
     #TODO: add comments
 
-    return render_to_response("section_element_standard.html", {"roots": roots, "prop_list" : prop_list, "test": test}, context_instance=RequestContext(request, processors=[UserProcessor]))
+    return render_to_response("section_element_standard.html", {"roots": roots, "prop_list" : prop_list}, context_instance=RequestContext(request, processors=[UserProcessor]))
     
-def add_section_element (request, s_el_subcl_short_uri):#s_el_subcl_short_uri - low level subclass
+def add_section_element(request, s_el_subcl_short_uri):#s_el_subcl_short_uri - low level subclass
 
     if not check_is_auth(request.COOKIES):
         messages.error(request, "Please authenticate first")
@@ -243,3 +253,71 @@ def add_section_element (request, s_el_subcl_short_uri):#s_el_subcl_short_uri - 
 
     
     return render_to_response("add_section_element.html", {"roots": roots, "form" : form, "test": test}, context_instance=RequestContext(request, processors=[UserProcessor]))
+
+@csrf_exempt
+def show_user(request, user_short_uri):
+
+    if not check_is_auth(request.COOKIES):
+        messages.error(request, "Please authenticate first")
+        return HttpResponseRedirect("/login")
+
+    lang = get_lang(request.COOKIES)
+    
+    str_base = "http://www.owl-ontologies.com/Ontology1359802755.owl#"
+    base = Namespace(str_base)
+    rdfs = Namespace("http://www.w3.org/2000/01/rdf-schema#")
+    f = get_factory()
+
+    #fill workspaces
+    user_uri = str_base + user_short_uri
+    workspaces = f.get_class(base.Workspace)
+
+    #fill user workspaces
+    kwargs = {base.addedBy: user_uri}
+    created_workspaces = workspaces.filter(kwargs)
+    created_workspaces_f = []
+    for cw in created_workspaces:
+        created_workspaces_f.append((get_short_uri(cw.uri), getattr(cw, rdfs.label)['en']))
+
+    #fill user-participated workspaces
+    #TODO:
+    user_p_workspaces = []
+    user_p_workspaces_f = []
+
+    #forms
+    #fill lang form
+    lang_form = SetPrefferedLangForm()
+
+    #fill workspaces form
+    res_workspaces = created_workspaces_f + user_p_workspaces_f
+    workspaces_form = SetCurrentWorkspaceForm(workspaces=res_workspaces)
+
+    if request.method == 'POST':
+        #second request
+        formId = request.POST['formId']
+        if formId == 'lang':
+            form = SetPrefferedLangForm(request.POST)
+        else:
+            d = dict(request.POST.items() + {u'workspaces': res_workspaces}.items())
+            form = SetCurrentWorkspaceForm(d)
+        if form.is_valid():
+            #form is valid
+            cd = form.cleaned_data
+            if formId == 'lang':
+                lang = cd['lang']
+                messages.info(request, 'Language was set to ' + lang)
+                #TODO: set lang
+            else:
+                ws = cd['currWs']
+                messages.info(request, 'Workspace was set to ' + ws)
+                #TODO: set workspace
+        else:
+            #form is not valid
+            messages.error(request, "form is not valid")
+
+    return render_to_response("user.html", {"lang_form" : lang_form, "workspaces_form": workspaces_form,
+                                            "created_workspaces": created_workspaces_f, "user_p_workspaces": user_p_workspaces_f,
+                                            "show settings": False},
+                              context_instance=RequestContext(request, processors=[UserProcessor]))
+    
+    

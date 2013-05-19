@@ -18,6 +18,8 @@ urlpatterns = patterns('',
     (r'^logout/$', logout), 
     (r'^base/$', show_base),
     (r'^base/Section/$', show_sections),        #show class Section = show all elements of class Section
+    (r'^base/User/(\w+)/$', show_user),         #show user settings
+    #(r'^base/Workspace/(\w+)/$', show_workspace),    #show workspace                   
     (r'^base/Section/(\w+)/$', show_section),   #show class Section instance = show all current section elements
     (r'^base/(\w+)/add/$', add_section_element),#add instance of class
     (r'^base/SectionElement/(\w+)/$', show_section_element),    #show class SectionElement instance
