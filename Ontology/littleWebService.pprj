@@ -1,4 +1,4 @@
-; Sun May 19 14:45:18 MSD 2013
+; Mon May 27 20:41:12 MSD 2013
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[littleWebService_ProjectKB_Class66]
-		[littleWebService_ProjectKB_Class67]
-		[littleWebService_ProjectKB_Class68]
-		[littleWebService_ProjectKB_Class69]
-		[littleWebService_ProjectKB_Class70]))
+		[littleWebService_ProjectKB_Class11158]
+		[littleWebService_ProjectKB_Class11159]
+		[littleWebService_ProjectKB_Class11160]
+		[littleWebService_ProjectKB_Class11161]
+		[littleWebService_ProjectKB_Class11162]))
 
 ([CLSES_TAB] of  Widget
 
@@ -638,6 +638,9 @@
 	(y 0))
 
 ([KB_221055_Instance_71] of  Property_List
+)
+
+([KB_282469_Class0] of  Map
 )
 
 ([KB_301165_Instance_1013] of  Widget
@@ -3013,9 +3016,6 @@
 	(property_list [XY_Instance_195])
 	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.OWLFormWidget"))
 
-([KB_858910_Class0] of  Map
-)
-
 ([KB_865583_Instance_10] of  Widget
 
 	(is_hidden TRUE)
@@ -5341,6 +5341,31 @@
 	(property_list [littleWebService_ProjectKB_Class12])
 	(widget_class_name "edu.stanford.smi.RemoteKBTab.WordNetTab"))
 
+([littleWebService_ProjectKB_Class11158] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
+
+([littleWebService_ProjectKB_Class11159] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([littleWebService_ProjectKB_Class11160] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([littleWebService_ProjectKB_Class11161] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Thing")
+	(string_value "%3ANAME"))
+
+([littleWebService_ProjectKB_Class11162] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
 ([littleWebService_ProjectKB_Class12] of  Property_List
 )
 
@@ -5581,36 +5606,11 @@
 ([littleWebService_ProjectKB_Class60] of  Property_List
 )
 
-([littleWebService_ProjectKB_Class66] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
-
-([littleWebService_ProjectKB_Class67] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([littleWebService_ProjectKB_Class68] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([littleWebService_ProjectKB_Class69] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Thing")
-	(string_value "%3ANAME"))
-
 ([littleWebService_ProjectKB_Class7] of  Widget
 
 	(is_hidden TRUE)
 	(property_list [littleWebService_ProjectKB_Class8])
 	(widget_class_name "edu.stanford.smi.protege.keywordsearch.StringSearch"))
-
-([littleWebService_ProjectKB_Class70] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
 
 ([littleWebService_ProjectKB_Class8] of  Property_List
 )
@@ -5700,6 +5700,7 @@
 		"http://www.w3.org/2003/11/swrl#body"
 		"http://www.w3.org/2002/07/owl#MaxCardinalityRestriction"
 		"http://www.w3.org/2001/XMLSchema#gYearMonth"
+		"http://protege.stanford.edu/plugins/owl/protege#ExternalResource"
 		"http://www.w3.org/2002/07/owl#SymmetricProperty"
 		"http://www.w3.org/2000/01/rdf-schema#domain"
 		"http://www.w3.org/2001/XMLSchema#double"
