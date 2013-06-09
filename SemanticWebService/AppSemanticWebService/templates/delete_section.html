@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="post">
+    Are you sure you want to delete section {{ section }}?<br/>
+    {% if your_count %}
+    This section has {{ your_count }} section elements in current workspace!
+    {% endif %}
+    {% if common_count %}
+    This section has {{ common_count }} section elements at all!
+    This section will not be deleted!
+    {% endif %}
+    {{ form.as_p }}
+    <br/>
+    <button type="submit">Send</button>
+    </form>
+{% endblock %}
+

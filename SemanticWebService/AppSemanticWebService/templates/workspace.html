@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  
+    {% for element in elements %}
+        <div class="post">
+        <a href="/base/SectionElement/{{ element.0 }}">{{ element.1 }}</a>
+        </div>
+    {%  endfor %}
+    
+{% endblock %}

@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    Login please:<br/><br/>
     <form action="" method="post">
-    {{ form.as_table }}
+    Are you sure you want to delete section_element {{ section_element }}?<br/>
+    {{ form.as_p }}
+    <br/>
     <button type="submit">Send</button>
     </form>
-{%  endblock %}
+{% endblock %}

@@ -1,9 +1,11 @@
 {% extends "base.html" %}
-
 {% block content %}
-    Login please:<br/><br/>
+
     <form action="" method="post">
-    {{ form.as_table }}
+    Edit instance of class section element<br/>
+    {{ form.as_p }}
+    <br/>
     <button type="submit">Send</button>
     </form>
-{%  endblock %}
+
+{% endblock %}

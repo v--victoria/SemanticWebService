@@ -2,27 +2,29 @@
 <html>
 <head>
     <link href="{{ STATIC_URL }}style.css" rel="stylesheet" type="text/css" />
-    <title>Test</title>
+    <title>Semantic Web Service</title>
 </head>
 <body>
 <div id="wrapper">
     <div id="header">
-        Header<br/>
+        Welcome to Semantic Web Service "KNOWLEDGE PORTAL"<br/>
         {% if test %}
             {{ test }}
         {% endif %}
     </div>
     <div id="page">
         <div id="sidebar">
-            Sidebar<br/><br/>
+            SECTIONS:<br/><br/>
             <ul>
                 {% for node in roots %}
                     {% include "tree.html" %}
                 {% endfor %}
             </ul>
+            <a href="/base/Section/add">Add new section</a>
         </div>
         <div id="content">
             Content<br/><br/>
+            
             {% if isAuth %}
             Welcome, {{ user }}!<br/>
             Your preferred language is {{ lang }}.<br/>
@@ -30,6 +32,7 @@
             <a href="/logout">Logout</a>
 	    <br/><br/><br/><hr>
             {% endif %}
+            
             {% if messages %}
                 <br/>
                 <div id="messages">
@@ -45,6 +48,7 @@
                 </div>
 	    <br/><br/><br/><hr>
             {% endif %}
+            
             {% block content %}{% endblock %}
         </div>
     </div>

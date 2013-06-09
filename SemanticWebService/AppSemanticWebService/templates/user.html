@@ -6,13 +6,18 @@
     Created/user workspaces:
     <ul>
     {% for workspace in created_workspaces %}
-    <li><a href="/base/Workspace/{{ workspace.0 }}">{{ workspace.1 }}</a></li>
+    <li><a href="/base/Workspace/{{ workspace }}">{{ workspace }}</a><br/>
+    <a href="/base/Workspace/{{ workspace }}/edit/">Edit     </a>
+    <a href="/base/Workspace/{{ workspace }}/delete/">Delete</a><br/>
+    </li>
     {%  endfor %}
     </ul>
+    <a href="/base/Workspace/add">Add your new workspace</a>
+    <br/><br/>
     User-participated workspaces:
     <ul>
     {% for workspace in user_p_workspaces %}
-    <li><a href="/base/Workspace/{{ workspace.0 }}">{{ workspace.1 }}</a></li>
+    <li><a href="/base/Workspace/{{ workspace }}">{{ workspace }}</a></li>
     {%  endfor %}
     </ul>
     <hr>

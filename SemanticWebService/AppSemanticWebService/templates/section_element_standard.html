@@ -2,7 +2,23 @@
 {% block content %}
 
 {% for element in prop_list %}
-{{ element.0 }}: {{ element.1 }}<br/><br/>
+<table>
+<tr>
+<td>{{ element.0 }}: </td>
+<td>
+{% if element.0 == "hasImage" %}
+	<img src="{{ STATIC_URL }}images/{{ element.1 }}" alt="{{ element.1 }}" />
+{% else %}
+	{{ element.1 }}
+{% endif %}
+</td>
+<br/>
+</tr>
+</table>
 {% endfor %}
-
+<br/><hr>
+Comments:<br/>
+{{ comments|unordered_list }}
+<br/><hr>
+<a href="edit/">Edit current element</a>
 {% endblock %}

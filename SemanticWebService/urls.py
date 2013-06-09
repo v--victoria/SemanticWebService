@@ -14,13 +14,20 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    (r'^login/$', login),
-    (r'^logout/$', logout), 
-    (r'^base/$', show_base),
-    (r'^base/Section/$', show_sections),        #show class Section = show all elements of class Section
-    (r'^base/User/(\w+)/$', show_user),         #show user settings
-    #(r'^base/Workspace/(\w+)/$', show_workspace),    #show workspace                   
-    (r'^base/Section/(\w+)/$', show_section),   #show class Section instance = show all current section elements
-    (r'^base/(\w+)/add/$', add_section_element),#add instance of class
-    (r'^base/SectionElement/(\w+)/$', show_section_element),    #show class SectionElement instance
+    (r'^login/$', login),                                               #login to system
+    (r'^logout/$', logout),                                             #logout from system
+    (r'^base/$', show_base),                                            #show main page
+    (r'^base/Section/$', show_base),                                    #show main page
+    (r'^base/User/(\w+)/edit/$', show_user),                            #show/edit user settings
+    (r'^base/Workspace/add/$', add_workspace),                          #add workspace
+    (r'^base/Workspace/(\w+)/edit/$', edit_workspace),                  #edit workspace
+    (r'^base/Workspace/(\w+)/delete/$', delete_workspace),              #delete workspace
+    (r'^base/Workspace/(\w+)/$', show_workspace),                       #show workspace section elements in logical order                      
+    (r'^base/Section/(\w+)/$', show_section),                           #show current section elements
+    (r'^base/Section/add/$', add_section),                              #add new section
+    (r'^base/Section/(\w+)/delete/$', delete_section),                  #delete section
+    (r'^base/(\w+)/add/$', add_section_element),                        #add new section element to current section
+    (r'^base/SectionElement/(\w+)/standard$', show_section_element),    #show section element
+    (r'^base/SectionElement/(\w+)/edit/$', edit_section_element),       #edit section element
+    (r'^base/SectionElement/(\w+)/edit/$', delete_section_element),     #delete section element      
 )
