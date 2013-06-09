@@ -4,11 +4,11 @@
     <form action="" method="post">
     Are you sure you want to delete section {{ section }}?<br/>
     {% if your_count %}
-    This section has {{ your_count }} section elements in current workspace!
+    This section has {{ your_count }} section elements in current workspace!<br/>
     {% endif %}
-    {% if common_count %}
-    This section has {{ common_count }} section elements at all!
-    This section will not be deleted!
+    {% if other_count %}
+    This section has {{ other_count }} section elements in other workspaces!<br/>
+    This section will not be deleted!<br/><br/>
     {% endif %}
     {{ form.as_p }}
     <br/>

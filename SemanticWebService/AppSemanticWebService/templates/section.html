@@ -4,7 +4,7 @@
 
     {% for element in elements %}
         <div class="post">
-        <a href="/base/SectionElement/{{ element.0 }}">{{ element.1 }}</a>
+        <a href="/base/SectionElement/{{ element.0 }}/standard/">{{ element.1 }}</a>
         </div>
     {%  endfor %}
     <br/><br/><br/>
@@ -19,7 +19,12 @@
     Add new subsection to current section<br/>
     Please note new section will be a subsection of current section!<br/>
     <form action="" method="post">
-    {{ form_new_section.as_p }}<br/>
+    {{ form_new_section.as_p }}
+    <button type="submit">Create</button>
     </form>
+    <br/><br/><br/>
+
+    Delete current section<br/>
+    <a href="delete">Delete</a>
     
 {% endblock %}

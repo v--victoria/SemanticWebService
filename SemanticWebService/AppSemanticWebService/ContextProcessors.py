@@ -21,5 +21,5 @@ def SectionsProcessor(request):
     f = get_factory()
     lang = get_cookie_value(request.COOKIES, "LANG")
     roots = get_section_roots(f, lang)
-    temp = temp + None
+    #temp = temp + None
     return {'roots': roots}

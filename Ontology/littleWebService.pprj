@@ -1,4 +1,4 @@
-; Mon May 27 20:41:12 MSD 2013
+; Sun Jun 09 18:11:12 MSD 2013
 ; 
 ;+ (version "3.4.8")
 ;+ (build "Build 629")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[littleWebService_ProjectKB_Class11158]
-		[littleWebService_ProjectKB_Class11159]
-		[littleWebService_ProjectKB_Class11160]
-		[littleWebService_ProjectKB_Class11161]
-		[littleWebService_ProjectKB_Class11162]))
+		[littleWebService_ProjectKB_Class10383]
+		[littleWebService_ProjectKB_Class10384]
+		[littleWebService_ProjectKB_Class10385]
+		[littleWebService_ProjectKB_Class10386]
+		[littleWebService_ProjectKB_Class10387]))
 
 ([CLSES_TAB] of  Widget
 
@@ -265,6 +265,9 @@
 	(y 0))
 
 ([KB_024013_Instance_5] of  Property_List
+)
+
+([KB_061518_Class0] of  Map
 )
 
 ([KB_100699_Instance_0] of  Widget
@@ -638,9 +641,6 @@
 	(y 0))
 
 ([KB_221055_Instance_71] of  Property_List
-)
-
-([KB_282469_Class0] of  Map
 )
 
 ([KB_301165_Instance_1013] of  Widget
@@ -5335,36 +5335,36 @@
 ([littleWebService_ProjectKB_Class10] of  Property_List
 )
 
+([littleWebService_ProjectKB_Class10383] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
+
+([littleWebService_ProjectKB_Class10384] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([littleWebService_ProjectKB_Class10385] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([littleWebService_ProjectKB_Class10386] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Thing")
+	(string_value "%3ANAME"))
+
+([littleWebService_ProjectKB_Class10387] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
 ([littleWebService_ProjectKB_Class11] of  Widget
 
 	(is_hidden TRUE)
 	(property_list [littleWebService_ProjectKB_Class12])
 	(widget_class_name "edu.stanford.smi.RemoteKBTab.WordNetTab"))
-
-([littleWebService_ProjectKB_Class11158] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
-
-([littleWebService_ProjectKB_Class11159] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([littleWebService_ProjectKB_Class11160] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([littleWebService_ProjectKB_Class11161] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Thing")
-	(string_value "%3ANAME"))
-
-([littleWebService_ProjectKB_Class11162] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
 
 ([littleWebService_ProjectKB_Class12] of  Property_List
 )

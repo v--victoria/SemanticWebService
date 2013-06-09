@@ -8,7 +8,7 @@ str_rdfs = "http://www.w3.org/2000/01/rdf-schema#"
 rdfs = Namespace(str_rdfs)
 str_base = "http://www.owl-ontologies.com/Ontology1359802755.owl#"
 base = Namespace(str_base)
-conn_string = "http://192.168.0.107:10035/repositories/SWS"
+conn_string = "http://192.168.0.102:10035/repositories/SWS"
 
 def get_factory():
     db = AllegroBackend(conn_string)
@@ -29,30 +29,26 @@ def get_section_element_types():
     return res
 
 def get_label(obj, lang):
-    if not hasattr(obj, rdfs.label):
-        return "no label"
-    if lang == "ru":
-        label = getattr(obj, rdfs.label).ru
-    if lang == "en":
-        label = getattr(obj, rdfs.label).en
-    else:
-        label = getattr(obj, rdfs.label).en
-    return label
+    res = "no label"
+    label = getattr(obj, rdfs.label)
+    if lang == "ru" and hasattr(label, 'ru'):
+        res = getattr(obj, rdfs.label).ru
+    if lang == "en" and hasattr(label, 'en'):
+        res = getattr(obj, rdfs.label).en
+    if hasattr(label, 'en'):
+        res = getattr(obj, rdfs.label).en
+    return str(res)
 
 def get_section_roots(factory, lang):
     f = factory
     roots = []
     #get objects of class Section without attribute subSectionOf    
     cl = f.get_class(base.Section)
-    i = 0
     for possible_root in cl.get_objects():
-        i = i + 1
-        b = hasattr(possible_root, base.subSectionOf)
         v = getattr(possible_root, base.subSectionOf)
-        if i == 2:
-            temp = temp + None
-        if not hasattr(possible_root, base.subSectionOf):
-            
+        if get_short_uri(possible_root.uri) == "HarryPotter":#TODO: !
+            v = None
+        if not v:  
             root = possible_root
             label = get_label(root, lang)
             roots.append(fill_section_tree(f, root.uri, label, lang))
@@ -71,8 +67,8 @@ def fill_section_tree(factory, node_uri, node_label, lang):
 
 def check_is_auth(cookies):
     isAuth = False;
-    if cookies and "CURRENT_USER" in cookies:
-        user = cookies["CURRENT_USER"]
+    if cookies and "USER" in cookies:
+        user = cookies["USER"]
         isAuth = True#TODO: check real isAuth value
     return isAuth
 
@@ -115,3 +111,23 @@ def fill_comment_tree(factory, main_cl, node_uri, node_text, prop, lang):#fill t
         for ch_sub in children_sub:
             n.children.append(fill_comment_tree(f, main_cl, ch_sub.uri, get_comment_text(f, sub_cl.uri, ch_sub.uri), prop, lang))
     return n
+
+def is_section_element_subclass(factory, cl):
+    f = factory
+    main_cl = f.get_class(base.SectionElement)
+    for sub_cl in main_cl.get_subclasses():
+        if cl == sub_cl:
+            return True
+    return False
+
+def get_obj_class_name(obj):
+    try:
+        return get_short_uri(str(type(obj).uri))
+    except Exception:
+        return None
+
+def get_obj_name(obj):
+    try:
+        return get_short_uri(obj.uri)
+    except Exception:
+        return None

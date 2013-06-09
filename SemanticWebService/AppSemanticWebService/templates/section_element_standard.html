@@ -1,24 +1,40 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% for element in prop_list %}
+{% for p, v, t in properties %}
 <table>
 <tr>
-<td>{{ element.0 }}: </td>
+<td id="prop">{{ p }}: </td>
 <td>
-{% if element.0 == "hasImage" %}
-	<img src="{{ STATIC_URL }}images/{{ element.1 }}" alt="{{ element.1 }}" />
+{% if p == "hasImage" %}
+	<img src="{{ STATIC_URL }}images/{{ v }}" alt="{{ v }}" />
 {% else %}
-	{{ element.1 }}
+    {% if t != "unsupported" %}
+        {% if t == "SectionElement" %}
+            <a href="/base/{{ t }}/{{ v }}/standard/">{{ v }}</a>
+        {% else %}
+            <a href="/base/{{ t }}/{{ v }}/">{{ v }}</a>
+        {% endif %}
+    {% else %}
+        {{ v }}
+    {% endif %}
 {% endif %}
 </td>
 <br/>
 </tr>
 </table>
 {% endfor %}
+
 <br/><hr>
+
 Comments:<br/>
 {{ comments|unordered_list }}
+
 <br/><hr>
-<a href="edit/">Edit current element</a>
+
+<a href="/base/SectionElement/{{ element }}/edit/">Edit</a>
+<br/>
+<a href="/base/SectionElement/{{ element }}/delete/">Delete</a>
+<br/>
+
 {% endblock %}

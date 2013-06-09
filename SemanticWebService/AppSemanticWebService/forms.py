@@ -1,6 +1,11 @@
 from django import forms
-from utils2 import get_section_element_types, get_factory
+from utils2 import get_section_element_types, get_factory, get_short_uri, get_obj_name
 from rdflib import Namespace
+
+str_rdfs = "http://www.w3.org/2000/01/rdf-schema#"
+rdfs = Namespace(str_rdfs)
+str_base = "http://www.owl-ontologies.com/Ontology1359802755.owl#"
+base = Namespace(str_base)
 
 #login
 class LoginForm(forms.Form):
@@ -22,28 +27,19 @@ class SetCurrentWorkspaceForm(forms.Form):
         self.fields['formId'] = forms.CharField(widget=forms.HiddenInput(), initial='ws')
     
 class EditSectionElementForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        str_base = "http://www.owl-ontologies.com/Ontology1359802755.owl#"
-        rdfs_base = "http://www.w3.org/2000/01/rdf-schema#"
-        rdfs = Namespace("http://www.w3.org/2000/01/rdf-schema#")
-        
+    def __init__(self, *args, **kwargs):        
         f = get_factory()
-        properties = kwargs.pop('properties', None)#TODO: support different types
+        properties = kwargs.pop('properties', None)
         super(EditSectionElementForm, self).__init__(*args, **kwargs)
-        for p in properties:
-            p_uri = str(p[0])
+        for p, v, t in properties:
             #TODO: differ types of properties (object property - dropdownlist, data property with different ranges - charfield, calendar)
-            if 'class' in str(p[1]):
-                try:
-                    cl = f.get_class(str_base+str(p[1]).split(" ")[1])
-                    objects = []
-                    for obj in cl.get_objects():
-                        objects.append((obj.uri, obj.uri))
-                    self.fields[p_uri] = forms.ChoiceField(required=True, label=str(p[0]), choices=objects)
-                except Exception:
-                    self.fields[p_uri] = forms.CharField(required=False, label=p_uri)    
-            else:
-                self.fields[p_uri] = forms.CharField(required=False, label=p_uri)
+            if t == 'unsupported':
+                self.fields[p] = forms.CharField(required=False, label=get_short_uri(p))
+            else:#supported
+                choices = []
+                for obj in f.get_class(str_base + t).get_objects():
+                    choices.append((obj.uri, get_obj_name(obj)))
+                self.fields[p] = forms.ChoiceField(required=False, label=get_short_uri(p), choices=choices, initial=obj.uri)
 
 #add
 class AddWorkspaceForm(forms.Form):
@@ -61,9 +57,8 @@ class SelectSectionElementTypeForm(forms.Form):#used in show_section
         res_choices.append(("/base/" + c[1] + "/add", c[1]))
     section_element_type = forms.ChoiceField(required=True,
                                              label='Section Element type',
-                                             choices=res_choices#,
-                                             widget=forms.Select(attrs={'onChange':'window.document.location.href=this.options[this.selectedIndex].value;'})
-                                             )
+                                             choices=res_choices,
+                                             widget=forms.Select(attrs={'onChange':'window.document.location.href=this.options[this.selectedIndex].value;'}))
     formId = forms.CharField(widget=forms.HiddenInput(), initial='selectType')
 
 class NewSectionElementForm(forms.Form):
@@ -72,10 +67,10 @@ class NewSectionElementForm(forms.Form):
         super(NewSectionElementForm, self).__init__(*args, **kwargs)
         for p in properties:
             #TODO: differ types of properties (object property - dropdownlist, data property with different ranges - charfield, calendar) 
-            self.fields[p[1]] = forms.CharField(required=False, label=('property name: ' + p[1] + '; property type: ' + p[2]))
+            self.fields[p[0]] = forms.CharField(required=False, label='property ' + p[0])
 
 #delete
 #delete_workspace, delete_section, delete_section_element
 class DeleteConfirmationForm(forms.Form):
-    choices=[('Y','YES'),('N','MO')]
+    choices=[('Y','Yes'),('N','No')]
     answer = forms.ChoiceField(required=True, choices=choices, widget=forms.RadioSelect(), label='Confirm your choice please')

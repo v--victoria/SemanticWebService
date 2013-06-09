@@ -7,13 +7,15 @@
 <body>
 <div id="wrapper">
     <div id="header">
-        Welcome to Semantic Web Service "KNOWLEDGE PORTAL"<br/>
+        <br/><br/>
+        Welcome to Semantic Web Service <a href="/base/">"KNOWLEDGE PORTAL"</a><br/>
         {% if test %}
             {{ test }}
         {% endif %}
     </div>
     <div id="page">
         <div id="sidebar">
+            {% if roots %}
             SECTIONS:<br/><br/>
             <ul>
                 {% for node in roots %}
@@ -21,15 +23,15 @@
                 {% endfor %}
             </ul>
             <a href="/base/Section/add">Add new section</a>
+            {% endif %}
         </div>
         <div id="content">
-            Content<br/><br/>
-            
             {% if isAuth %}
             Welcome, {{ user }}!<br/>
             Your preferred language is {{ lang }}.<br/>
             Your current workspace is {{ ws }}.<br/>
-            <a href="/logout">Logout</a>
+            <a href="/logout">Logout</a><br/>
+            <a href="/base/User/{{ user }}/edit/">Edit my settings</a>
 	    <br/><br/><br/><hr>
             {% endif %}
             

@@ -38,6 +38,13 @@ p, ul, ol {
 	line-height: 180%;
 }
 
+#prop {
+        width: 180px;
+}
+
+th {
+        width: 180px;
+}
 ul, ol {
 }
 
